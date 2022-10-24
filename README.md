@@ -19,7 +19,7 @@ add_action( 'init', function() {
 	$api_key = 'some_random_api_key';
 
 	// Include the api wrapper object class.
-	require 'class-rocketgeek-proofy-email-validation.php';
+	require 'proofy/class-rocketgeek-proofy-email-validation.php';
 
 	// Initiate the object class with your api key.
 	global $proofy;
@@ -29,7 +29,7 @@ add_action( 'init', function() {
 
 Now you can verify an email anywhere:
 
-```
+```php
 global $proofy;
 
 $result = $proofy->veryify( "email@example.com" );
@@ -53,7 +53,8 @@ Array(
 			[disposable] => 0
 		)
 	)
-)```
+)
+```
 
 From the result, you can check the status.  Proofy's status codes are:
 * 1 – deliverable
@@ -63,9 +64,10 @@ From the result, you can check the status.  Proofy's status codes are:
 
 So extending from the example above, you can do something like:
 
-```
+```php
 if ( 1 == $result['result'][0]['status'] ) {
 
 	echo $result['result'][0]['email'] . " is deliverable";
 	
-}```
+}
+```
